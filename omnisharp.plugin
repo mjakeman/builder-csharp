@@ -1,0 +1,18 @@
+[Plugin]
+Builtin=false
+Description=Provides language server integration for C# via OmniSharp
+Loader=python3
+Module=omnisharp_plugin
+Name=OmniSharp Language Server Plugin
+X-Builder-ABI=42.0
+X-Diagnostic-Provider-Languages=c-sharp
+X-Diagnostic-Provider-Languages-Priority=100
+X-Completion-Provider-Languages=c-sharp
+X-Hover-Provider-Languages=c-sharp
+X-Code-Action-Languages=c-sharp
+X-Symbol-Resolver-Languages=c-sharp
+X-Highlighter-Languages=c-sharp
+X-Formatter-Languages=c-sharp
+
+
+
