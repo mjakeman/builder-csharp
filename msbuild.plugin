@@ -1,0 +1,9 @@
+[Plugin]
+Builtin=false
+Description=Provides build system integration for msbuild projects
+Loader=python3
+Module=msbuild_plugin
+Name=MSBuild Plugin
+X-Builder-ABI=42.0
+X-Project-File-Filter-Name=MSBuild (dotnet)
+X-Project-File-Filter-Pattern=*.csproj
