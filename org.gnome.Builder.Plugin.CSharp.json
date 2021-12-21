@@ -1,0 +1,34 @@
+{
+    "id": "org.gnome.Builder.Plugin.CSharp",
+    "branch": "master",
+    "runtime": "org.gnome.Builder",
+    "runtime-version": "master",
+    "sdk": "org.gnome.Sdk//master",
+    "build-extension": true,
+    "separate-locales": true,
+    "appstream-compose": false,
+    "build-options": {
+        "no-debuginfo": true,
+        "strip": true,
+        "prefix": "/app/extensions/CSharp",
+        "append-path": "/app/extensions/CSharp/bin",
+        "append-pkg-config-path": "/app/extensions/CSharp/lib/pkgconfig",
+        "append-ld-library-path": "/app/extensions/CSharp/lib"
+    },
+    "modules": [
+        {
+            "name" : "csls",
+            "buildsystem" : "meson",
+            "config-opts" : [
+            	"--pkg-config-path=/app/lib/pkgconfig:/app/lib/gnome-builder/pkgconfig"
+            ],
+            "builddir" : true,
+            "sources" : [
+                {
+                    "type" : "dir",
+                    "path" : "./"
+                }
+            ]
+        }
+    ]
+}

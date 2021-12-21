@@ -1,0 +1,17 @@
+[Plugin]
+Authors=Matthew Jakeman <mjakeman26@outlook.co.nz>
+Builtin=false
+Copyright=Copyright © 2021 Matthew Jakeman
+Depends=buildui;editor;git;
+Description=Provides metadata and build system integration for C#
+Module=libcsls
+Name=C# Language Server
+X-Completion-Provider-Languages=c-sharp
+X-Diagnostic-Provider-Languages=c-sharp
+X-Symbol-Resolver-Languages=c-sharp
+X-Formatter-Languages=c-sharp
+X-Highlighter-Languages=c-sharp
+X-Hover-Provider-Languages=c-sharp
+X-Rename-Provider-Languages=c-sharp
+X-Code-Action-Languages=c-sharp
+X-Builder-ABI=42.0

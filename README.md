@@ -1,44 +1,33 @@
 # C# for GNOME Builder
 A project to achieve first class support for C# inside GNOME Builder.
 
-It currently includes LSP-integration for using OmniSharp with Builder.
+The language server [csharp-ls](https://github.com/razzmatazz/csharp-language-server) is used to
+provide symbol and metadata information. Ideally, we will one day support OmniSharp, however
+various desync bugs makes it near-unusable in the mean time.
 
-## Usage Guide 
-Note: OmniSharp's initialisation is currently very broken. You need to use this elaborate process to start Builder properly. Help wanted!
+`builder-csharp` is packaged as a flatpak extension to GNOME Builder.g
 
-1. Download OmniSharp for Linux (net6.0 is ideal) and place it in your home folder so the path to the binary is `~/omnisharp/OmniSharp`.
-2. Paste the files in this repo into `~/.local/share/gnome-builder/plugins`, making the folders if they do not exist.
-3. VERY IMPORTANT: If you interact with a text buffer in Builder **at all**, OmniSharp will quit. Therefore, run builder like this:
+## Building
+You will need to use a custom build of GNOME Builder (with development files left in) in
+order to compile `builder-csharp`. You can get a flatpak of this build [here](https://gitlab.gnome.org/firox263/gnome-builder/-/jobs/1685292)
+temporarily.
 
-Open a terminal so you can run builder from the command line. If you are using flatpak'd builder, open a shell inside the sandbox as follows:
+Dependencies:
+ 1. `gnome-nightly` flatpak repo installed
+ 2. Custom GNOME Builder flatpak from above (this is only to build, you can use the regular nightly version to run)
+ 3. `flatpak-builder`
+ 
+Run the following to build and install the plugin:
 
 ```
-flatpak run --command=sh org.gnome.Builder
+flatpak-builder _build --install --force-clean org.gnome.Builder.Plugin.CSharp.json
 ```
 
-Now run GNOME Builder with debug output enabled:
+You can uninstall the plugin at any time and reset to a "clean slate":
 
 ```
-JSONRPC_DEBUG=1 gnome-builder -vvv
+flatpak remove org.gnome.Builder.Plugin.CSharp
 ```
-
-Open a folder containing a `sln` or `csproj` file. You must currently have no files open. If not, close all open files and then restart Builder.
-
-This is very important. You must open a C# source file using the sidebar, DO NOT click or mouse over the source view, and alt-tab away immediately. A fullscreen window is a good idea to prevent accidental interaction.
-
-Now alt-tab to the terminal and watch OmniSharp debug messages until they slow down or stop. You need to wait for all projects to be loaded before interacting.
-
-When this is done, try hovering over a variable or type. You should see information pulled from OmniSharp, this means LSP integration is working (and ideally will work for the rest of the session). If an error about "stream failure" is thrown, time to try again :(
-
-## Status
-What works:
- - Hover support
- - Symbol resolution (e.g. Go to Definition) - really well actually
-
-What doesn't work:
- - Consistent, predictable startup
- - Intellisense (needs fixes to Builder and/or OmniSharp)
- - Project integration (you cannot use the Build/Run buttons inside Builder, you'll need to use the `dotnet` cli for now)
 
 ## Contributing
 Let's make C# development a first class experience on Linux. Contributions are welcome, especially if you want to help fix the LSP-Builder interaction bugs.
