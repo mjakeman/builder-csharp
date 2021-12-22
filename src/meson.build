@@ -1,7 +1,8 @@
 sources = [
     'csls-plugin.c',
     'csls-service.c',
-    'csls-symbol-resolver.c'
+    'csls-symbol-resolver.c',
+    'csls-hover-provider.c'
 ]
 
 plugin_dir = 'lib' / 'gnome-builder' / 'plugins'
