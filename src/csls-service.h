@@ -1,4 +1,4 @@
-/* csls-plugin.c
+/* csls-service.h
  *
  * Copyright 2021 Matthew Jakeman <mjakeman26@outlook.co.nz>
  *
@@ -18,28 +18,16 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-#define G_LOG_DOMAIN "csls-plugin"
+#pragma once
 
-#include <glib-object.h>
-#include <libpeas/peas.h>
-#include <libide-code.h>
-#include <libide-foundry.h>
-#include <libide-gui.h>
+#include <libide-lsp.h>
 
-#include "csls-service.h"
-#include "csls-symbol-resolver.h"
+G_BEGIN_DECLS
 
-_IDE_EXTERN void
-peas_register_types (PeasObjectModule *module)
-{
-  g_info ("CSLS for Builder");
+#define CSLS_TYPE_SERVICE (csls_service_get_type())
 
-  peas_object_module_register_extension_type (module,
-                                              IDE_TYPE_LSP_SERVICE,
-                                              CSLS_TYPE_SERVICE);
+G_DECLARE_FINAL_TYPE (CslsService, csls_service, CSLS, SERVICE, IdeLspService)
 
-  peas_object_module_register_extension_type (module,
-                                              IDE_TYPE_SYMBOL_RESOLVER,
-                                              CSLS_TYPE_SYMBOL_RESOLVER);
-}
+CslsService *csls_service_new (void);
 
+G_END_DECLS
