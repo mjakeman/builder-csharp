@@ -35,12 +35,6 @@ G_DEFINE_FINAL_TYPE_WITH_CODE (CslsSymbolResolver,
                                IDE_TYPE_LSP_SYMBOL_RESOLVER,
                                G_IMPLEMENT_INTERFACE (IDE_TYPE_SYMBOL_RESOLVER, symbol_iface_init))
 
-CslsSymbolResolver *
-csls_symbol_resolver_new (void)
-{
-  return g_object_new (CSLS_TYPE_SYMBOL_RESOLVER, NULL);
-}
-
 static void
 csls_symbol_resolver_class_init (CslsSymbolResolverClass *klass)
 {
@@ -49,8 +43,8 @@ csls_symbol_resolver_class_init (CslsSymbolResolverClass *klass)
 static void
 csls_symbol_resolver_init (CslsSymbolResolver *self)
 {
+  g_info ("Initialised CSLS Symbol Resolver");
 }
-
 
 static void
 csls_symbol_resolver_load (IdeSymbolResolver *self)
@@ -64,7 +58,6 @@ csls_symbol_resolver_load (IdeSymbolResolver *self)
 static void
 symbol_iface_init (IdeSymbolResolverInterface *iface)
 {
-  g_info ("Initialised CSLS Symbol Resolver");
   iface->load = csls_symbol_resolver_load;
 }
 
