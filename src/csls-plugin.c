@@ -29,6 +29,7 @@
 #include "csls-service.h"
 #include "csls-symbol-resolver.h"
 #include "csls-hover-provider.h"
+#include "csls-search-provider.h"
 
 _IDE_EXTERN void
 peas_register_types (PeasObjectModule *module)
@@ -46,5 +47,9 @@ peas_register_types (PeasObjectModule *module)
   peas_object_module_register_extension_type (module,
                                               IDE_TYPE_HOVER_PROVIDER,
                                               CSLS_TYPE_HOVER_PROVIDER);
+
+  peas_object_module_register_extension_type (module,
+                                              IDE_TYPE_SEARCH_PROVIDER,
+                                              CSLS_TYPE_SEARCH_PROVIDER);
 }
 
