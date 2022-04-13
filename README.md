@@ -15,13 +15,12 @@ can be found at the path `$HOME/Projects/csharp-language-server/src/CSharpLangua
 In future, the language server will be included inside the flatpak sandbox.
 
 ## Building
-You will need to use a custom build of GNOME Builder (with development files left in) in
-order to compile `builder-csharp`. You can get a flatpak of this build [here](https://gitlab.gnome.org/firox263/gnome-builder/-/jobs/1686641)
-temporarily - click 'Download' under 'Job artifacts'.
+You will need the latest `master` version of GNOME Builder. You can obtain it
+from the `gnome-nightly` flatpak repository.
 
 Dependencies:
- 1. `gnome-nightly` flatpak repo installed
- 2. Custom GNOME Builder flatpak from above (this is only to build, you can use the regular nightly version to run)
+ 1. Latest GNOME Builder from `gnome-nightly` flatpak repo installed
+ 2. `org.freedesktop.Sdk.Extension.dotnet6` installed from `flathub`
  3. `flatpak-builder`
  
 Run the following to build and install the plugin:

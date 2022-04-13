@@ -1,9 +1,9 @@
 {
     "id": "org.gnome.Builder.Plugin.CSharp",
-    "branch": "master",
+    "branch": "stable",
     "runtime": "org.gnome.Builder",
-    "runtime-version": "master",
-    "sdk": "org.gnome.Sdk//master",
+    "runtime-version": "stable",
+    "sdk": "org.gnome.Sdk//42",
     "build-extension": true,
     "separate-locales": true,
     "appstream-compose": false,

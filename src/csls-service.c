@@ -62,17 +62,12 @@ csls_service_configure_client (IdeLspService *self,
 
 static void
 csls_service_configure_launcher (IdeLspService         *self,
+                                 IdePipeline           *pipeline,
                                  IdeSubprocessLauncher *launcher)
 {
   g_info ("Configure CSLS Service Launcher");
   ide_subprocess_launcher_set_argv (launcher, NULL);
-  // ide_subprocess_launcher_set_run_on_host (launcher, TRUE);
   ide_subprocess_launcher_set_clear_env (launcher, FALSE);
-
-  ide_subprocess_launcher_push_argv (launcher, "/bin/bash");
-  ide_subprocess_launcher_push_argv (launcher, "--login");
-  ide_subprocess_launcher_push_argv (launcher, "-c");
-  ide_subprocess_launcher_push_argv (launcher, "$HOME/Projects/csharp-language-server/src/CSharpLanguageServer/bin/Debug/net6.0/CSharpLanguageServer");
 }
 
 
@@ -94,4 +89,6 @@ csls_service_init (CslsService *self)
 {
   g_info ("Initialised CSLS Service");
   ide_lsp_service_set_inherit_stderr (IDE_LSP_SERVICE (self), TRUE);
+  ide_lsp_service_set_program (IDE_LSP_SERVICE (self), "CSharpLanguageServer");
+  ide_lsp_service_set_search_path (IDE_LSP_SERVICE (self), "/home/mjake/.csharp");
 }

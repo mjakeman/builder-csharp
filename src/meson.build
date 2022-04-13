@@ -8,7 +8,7 @@ sources = [
 
 plugin_dir = 'lib' / 'gnome-builder' / 'plugins'
 
-shared_library(
+shared_module(
     'csls',
     sources,
     dependencies : deps,
